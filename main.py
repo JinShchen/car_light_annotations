@@ -98,7 +98,6 @@ def show_img():
 
             def changePic(new):
                 '''flag=-1表示上一个，flag=1表示下一个'''
-
                 #global current
                 #new = current + flag
                 if new < 0:
@@ -109,14 +108,11 @@ def show_img():
                     # 获取要切换的图片文件名
                     global pic
                     pic = pics[new]
-
                     # 创建Image对象并进行缩放
                     im = Image.open(pic)
-
                     w, h = im.size
 
                     # 这里假设用来显示图片的Label组件尺寸为400*600
-
                     if w < 400:
                         h = int(h * 400 / w)
                         w = 400
@@ -133,7 +129,6 @@ def show_img():
                         w = int(w * 1200 / h)
                         h = 1200
                         im = im.resize((w, h))
-
 
                     # im = im.resize((w,h))
                     # 创建PhotoImage对象，并设置Label组件图片
@@ -171,27 +166,23 @@ def show_img():
 
             btnNext = tkinter.Button(root, text='下一张', command=btnNextClick)
             btnNext.place(x=1000, y=470, width=80, height=30)
-
             # 用来显示图片的Label组件
             lbPic = tkinter.Label(root, text='')
             global current
             current = 0
             changePic(current)
             lbPic.place(x=10, y=70)
-
             # 左灯
             l = tkinter.Label(root, bg='yellow', width=20, text='左车灯')
             l.place(x=1000, y=20, width=80, height=30)
             l.place(x=1000, y=20, width=80, height=30)
             # l.pack()
-
             bt1 = tkinter.Radiobutton(root, text="暗", variable=v_l, value=1)  # .pack(anchor=tkinter.W)
             bt1.place(x=1000, y=50, width=80, height=30)
             bt2 = tkinter.Radiobutton(root, text="亮", variable=v_l, value=2)  # .pack(anchor=tkinter.W)
             bt2.place(x=1000, y=80, width=80, height=30)
 
             # 右灯
-
             l = tkinter.Label(root, bg='yellow', width=20, text='右车灯')
             l.place(x=1000, y=110, width=80, height=30)
             # l.pack()
@@ -201,7 +192,6 @@ def show_img():
             bt2.place(x=1000, y=170, width=80, height=30)
 
             # 上灯
-
             l = tkinter.Label(root, bg='yellow', width=20, text='上车灯')
             l.place(x=1000, y=200, width=80, height=30)
             # l.pack()
@@ -213,7 +203,6 @@ def show_img():
             bt5.place(x=1000, y=290, width=80, height=30)
 
             # 方向
-
             l = tkinter.Label(root, bg='yellow', width=20, text='车体方向')
             l.place(x=1000, y=320, width=80, height=30)
             # l.pack()
@@ -255,7 +244,7 @@ def show_img():
                 changePic(current)
             except IndexError as e:
                 pass
-
+        # 创建一个列表
         for item in pics:  # 插入内容
             mylist.insert(tkinter.END, item)  # 从尾部插入
         mylist.bind("<Button-1>", callback)
@@ -267,20 +256,16 @@ def show_img():
         image_path = path_
 
     # 创建tkinter应用程序窗口
-
     path = tkinter.StringVar()
     bt_choose_path = tkinter.Button(root, text="读图文件夹", command=partial(selectPath, path))
     bt_choose_path.place(x=100, y=10, width=100, height=30)
-
     lb_choose_path = tkinter.Label(root, textvariable=path,
                                    bg='white', font=('Arial', 12))
     lb_choose_path.place(x=300, y=10, height=30)
 
     # 存txt路径
-
     bt_choose_path = tkinter.Button(root, text="存txt文件夹", command=partial(selectPath, save_txt_path))
     bt_choose_path.place(x=100, y=40, width=100, height=30)
-
     lb_choose_path = tkinter.Label(root, textvariable=save_txt_path,
                                    bg='white', font=('Arial', 12))
     lb_choose_path.place(x=300, y=40, height=30)
@@ -288,10 +273,8 @@ def show_img():
     bt_start_show.place(x=200, y=10, width=80, height=30)
     # 设置窗口大小和位置
     root.geometry('1200x1200+40+30')
-
     # 不允许改变窗口大小
     root.resizable(True, True)
-
     # 启动消息主循环
     root.mainloop()
 
